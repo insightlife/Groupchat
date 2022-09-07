@@ -1,0 +1,73 @@
+body {
+    background-image: url('http://groupmasti.herokuapp.com/static/back2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+img{
+    border-radius: 12px;
+    width:100%;
+}
+.align{
+    text-align:center;
+    color:white;
+}
+.logocheck{
+    text-align: center;
+    margin-left: 40px;
+    width: 150px;
+    height: 50px;
+}
+.btn-first{
+    margin-left: 200px;
+    width: 150px;
+    height:50px;
+}
+.btn-second{
+    margin-left: 100px;
+    width:150px;
+    height: 50px;
+}
+.btn-third{
+    margin-right: 0px;
+}
+.text-size{
+    font-size: 25px;
+}
+.home-body{
+    margin-top: 100px;
+}
+@media only screen and (max-width: 600px) {
+    img{
+        border-radius: 10px;
+        height:200px;
+    }
+    .home-body{
+        margin-top: 0px;
+    }
+    .btn-first{
+        margin-left: 10px;
+        width:100px;
+        height:40px;
+    }   
+    .logocheck{
+        text-align: center;
+        margin-left: 25px;
+        width: 100px;
+        height: 40px;
+    }
+    .btn-second{
+        margin-left: 0px;
+        width:80px;
+        height: 40px;
+        margin-right: 0px;
+    }
+    .text-size{
+        font-size:20px;
+    }
+}
+@media (min-width: 768px) {
+    .btn .btn-dark{
+        margin-right:20px;
+    }
+}

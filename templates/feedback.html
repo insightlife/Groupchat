@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static%}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6 align">
+                <form action="feedback" method="POST">
+                    {%csrf_token%}
+                    <h5 class="textstyle">{{fm.as_p}}</h5>
+                    <button type="submit" class="btn btn-dark pox">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{%endblock%}

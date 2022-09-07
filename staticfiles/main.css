@@ -1,0 +1,118 @@
+body {
+    background-image:url('https://groupmasti.herokuapp.com/static/back2.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+}
+img{
+    border-radius: 12px;
+}
+.align{
+    text-align:center;
+}
+#button-first{
+    height:50px;
+    width:200px;
+    font-size: large;
+    font-family: Georgia, serif;
+}
+.button-second{
+   color: brown;
+    font-size: large;
+    font-family: Georgia, serif;
+}
+#id{
+    margin-right:0px;
+}
+.logocheck{
+    text-align: center;
+    margin-left: 200px;
+    width: 200px;
+    height: 80px;
+}
+.align{
+    text-align:center;
+    color:white;
+}
+.olign{
+    text-align:center;
+    color:white;
+}
+.chat-online {
+    color: #34ce57
+}
+.chat-offline {
+    color: #e4606d
+}
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+    max-height: 800px;
+    overflow-y: scroll
+}
+.chat-message-left,
+.chat-message-right {
+    display: flex;
+    flex-shrink: 0
+}
+.chat-message-left {
+    margin-right: auto
+}
+.chat-message-right {
+    flex-direction: row-reverse;
+    margin-left: auto
+}
+.py-3 {
+    padding-top: 1rem!important;
+    padding-bottom: 1rem!important;
+}
+.px-4 {
+    padding-right: 1.5rem!important;
+    padding-left: 1.5rem!important;
+}
+.flex-grow-0 {
+    flex-grow: 0!important;
+}
+.border-top {
+    border-top: 1px solid #dee2e6!important;
+}
+.textstyle{
+    resize:none;
+    font-size: 1.6em;
+    font-family: "Times New Roman";
+}
+#pk{
+    margin-top: 100px;
+}
+#datepairExample{
+    min-width: 800px;
+}
+.point{
+    margin-left:20px;
+}
+@media only screen and (max-width: 600px) {
+    #button-first{
+      height:40px;
+      width:200px;
+      font-size: 18px;
+      margin-top:10px;
+    }
+    .point{
+        margin-left:10px;
+    }
+    #button-second{
+        height:40px;
+        width:250px;
+        font-size:18px;
+        margin-left:0px;
+    }
+    .logocheck{
+        text-align: center;
+        margin-left: 0px;
+        width: 100px;
+        height: 40px;
+    }
+    #pk{
+        margin-top: 0px;
+    }
+}

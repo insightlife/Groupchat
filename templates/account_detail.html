@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+{% block content %}
+{% load static%}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6 align">
+                <h3 class="textstyle">Profile details</h3>
+                <form  method="POST" class="form-group">
+                    {%csrf_token%}
+                    {%for t in data%}
+                    <h5 class="teztstyle">{{t.label_tag}}</h5> {{t}}
+                    {% endfor %}
+                </form>
+                <div class="row">
+                <div class="col-sm-3 textcls">
+                <a href="editprofile"><button class="btn btn-dark">EDIT PROFILE</button></a>
+                </div>
+                <div class="col-sm-3 textcls">
+                <a href="password"><button class="btn btn-success">PASSWORD</button></a>
+                </div>
+                <div class="col-sm-3 textcls">
+                <a href="logout"><button class="btn btn-warning">LOGOUT</button></a>
+                </div>
+                <div class="col-sm-3 textcls">
+                    <a href="/"><button class="btn btn-primary">CHAT ROOM</button></a>
+                </div>
+            </div>
+            </div><br>
+        </div>
+    </div>
+    {% endblock%}

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static%}
+    <div class="container-fluid home-body">
+        <div class="row">
+            <div class="col-sm-3 align">
+                <div class="col-md-12"><img src="{% static 'pic1.jpg'%}" ></div>
+                <div class="col-md-12 align"><a href="k/indian/"><button class="btn btn-dark">North Indian chatroom</button></a></div>
+            </div>
+            <div class="col-sm-3 align">
+                <div class="col-md-12"><img src="{% static 'pic5.jpg'%}" ></div>
+                <div class="col-md-12 align"><a href="k/kolkata/"><button class="btn btn-dark">NorthEast chatroom</button></a></div>
+            </div>
+            <div class="col-sm-3 align">
+                <div class="col-md-12"><img src="{% static 'pic6.jpg'%}"></div>
+                <div class="col-md-12 align"><a href="k/bangalore/"><button class="btn btn-dark">South Indian chatroom</button></a></div>
+            </div>
+            <div class="col-sm-3 align">
+                <div class="col-md-12"><img src="{% static 'dating8.jpg'%}"></div>
+                <div class="col-md-12 align"><a href="k/hyderbad/"><button class="btn btn-dark">Common chatroom</button></a></div>
+            </div>
+        </div>
+        <br><br>
+        <div class="row align">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-9">
+                <input type="text" placeholder="Create custom room of your choice" id="imp" name="custom" class="form-control align"><br>
+                <input type="submit" class="btn btn-dark" id="ok" value="create room">
+                <input type="text" placeholder="Create custom room of your choice" id="impp" name="custom" class="form-control align"><br>
+                <input type="submit" class="btn btn-dark" id="pk" value="create room">
+            </div>
+        </div>
+    <br>
+    <script>
+        document.getElementById("ok").onclick = function () {
+            const mmsg=document.getElementById('imp').value
+            console.log(mmsg)
+            location.href = "k/"+mmsg;
+        };
+        document.getElementById("pk").onclick = function () {
+            const mmsg=document.getElementById('impp').value
+            console.log(mmsg)
+            location.href = "ok/"+mmsg;
+        };
+    </script>
+{%endblock%}

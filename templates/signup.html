@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static%}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4 align">
+                <h3 class="textstyle">Creat your account</h3>
+                <form class="form-group" action="signup" method="POST">
+                    {% csrf_token %}
+                    {%for i in fm%}
+                    <h5 class="textstyle">{{ i.label }}</h5>
+                    <h5>{{ i }}{{i.errors|striptags}}</h5>
+                    {%endfor%}<br>
+                    <button class="btn btn-dark">SUBMIT</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{%endblock%}
