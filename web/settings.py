@@ -10,7 +10,7 @@ SECRET_KEY = 'django-insecure-d^z8ot%#l=7879ze8%^ytmkbvw8&_kdkj!!w@g!x#6k1+v09_(
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['groupmasti.herokuapp.com','127.0.0.1','www.consultandcounsel.com','www.groupchat.ind.in']
+ALLOWED_HOSTS = ['groupchat98.herokuapp.com','127.0.0.1','www.groupchat.ind.in']
 
 INSTALLED_APPS = [
     'app',
