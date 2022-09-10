@@ -110,5 +110,5 @@ CHANNEL_LAYERS = {
 
 AUTHENTICATION_BACKENDS = (('django.contrib.auth.backends.ModelBackend'),)
 
-CSRF_TRUSTED_ORIGINS = ["https://groupmasti.herokuapp.com","https://www.groupchat.ind.in","https://chat-webapp20.herokuapp.com/"]
+CSRF_TRUSTED_ORIGINS = ["https://groupchat98.herokuapp.com","https://www.groupchat.ind.in","https://chat-webapp20.herokuapp.com/"]
 
