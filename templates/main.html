@@ -4,17 +4,18 @@
     <br><br><br><br><br><br>
         {% if user.is_authenticated %}
         <div class="row">
-        <div class="col-sm-3 align"></div>
-        <div class="col-sm-3 align"><a href="home"><button class="btn btn-warning" id="button-first">Enter Room</button></a></div>
-        <div class="col-sm-3 align"><a href="account_check"><button class="btn btn-warning" id="button-first">Account/Profile</button></a></div>
-        <div class="col-3"></div>
+            <div class="col-sm-3 align"></div>
+            <div class="col-sm-3 align"><a href="home"><button class="btn btn-warning" id="button-first">Enter Room</button></a></div>
+            <div class="col-sm-3 align"><a href="account_check"><button class="btn btn-warning" id="button-first">Account/Profile</button></a></div>
+            <div class="col-3"></div>
+            <br><br><br><br><br><br>
         </div>
         {% else %}
         <div class="row">
-        <div class="col-sm-3 align"></div>
-        <div class="col-sm-3 align"><a href="signup"><button class="btn btn-warning" id="button-first">Signup</button></a></div>
-        <div class="col-sm-3 align" ><a href="login"><button class="btn btn-warning" id="button-first">Login</button></a></div>
-        <div class="col-3"></div>
+            <div class="col-sm-3 align"></div>
+            <div class="col-sm-3 align"><a href="signup"><button class="btn btn-warning" id="button-first">Signup</button></a></div>
+            <div class="col-sm-3 align" ><a href="login"><button class="btn btn-warning" id="button-first">Login</button></a></div>
+            <div class="col-3"></div>
         </div>
         <br>
         <div class="row">
@@ -23,7 +24,6 @@
             <div class="col-sm-3 align"><a href="account_check"><button class="btn btn-warning" id="button-first">Enter as model</button></a></div>
             <div class="col-3"></div>
         </div>
-        <br><br><br><br>
         {%endif%}
     </div>
 {%endblock%}

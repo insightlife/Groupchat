@@ -26,18 +26,22 @@
             <div class="col-sm-9">
                 <input type="text" placeholder="Create custom room of your choice" id="imp" name="custom" class="form-control align"><br>
                 <input type="submit" class="btn btn-dark" id="ok" value="create room">
+            </div>
+        </div><br>
+        <div class="row align">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-9">
                 <input type="text" placeholder="Create custom room of your choice" id="impp" name="custom" class="form-control align"><br>
-                <input type="submit" class="btn btn-dark" id="pk" value="create room">
+                <input type="submit" class="btn btn-dark" id="sk" value="create room">
             </div>
         </div>
-    <br>
     <script>
         document.getElementById("ok").onclick = function () {
             const mmsg=document.getElementById('imp').value
             console.log(mmsg)
             location.href = "k/"+mmsg;
         };
-        document.getElementById("pk").onclick = function () {
+        document.getElementById("sk").onclick = function () {
             const mmsg=document.getElementById('impp').value
             console.log(mmsg)
             location.href = "ok/"+mmsg;

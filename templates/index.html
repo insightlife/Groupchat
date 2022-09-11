@@ -2,28 +2,28 @@
 {% block content %}
 {% load static%}
 <section hidden>
-<div class="row">
-    <div class="col-sm-4">
-    <label id="l1">Choose your Role: </label>
-    <select id="language" onChange="update()"  class="form-select">
-        <option value="Nothing" id="nothing">Select role</option>
-        <option value="Mentor" id="Mentor">Mentor</option>
-        <option value="Mentee" id="Mentee">Mentee</option>
-    </select>
-    <br>
-    <label> Your current Role: </label>
-    <input type="text" id="value" class="form-control">
-    <div class="demo" id="watch">
-        <h5> Select Date and slot </h5>
-            <p id="datepairExample" class="poet">
-                        <input type="text" class="date start form-control" id="t1"/>
-                        <input type="text" class="time start form-control" id="t2"/> TO
-                        <input type="text" class="time end form-control" id="t3"/>
-                        <input type="text" class="date end form-control" id="t4"/>
-            </p>
+    <div class="row">
+        <div class="col-sm-4">
+            <label id="l1">Choose your Role: </label>
+            <select id="language" onChange="update()"  class="form-select">
+                <option value="Nothing" id="nothing">Select role</option>
+                <option value="Mentor" id="Mentor">Mentor</option>
+                <option value="Mentee" id="Mentee">Mentee</option>
+            </select>
+            <br>
+            <label> Your current Role: </label>
+            <input type="text" id="value" class="form-control">
+            <div class="demo" id="watch">
+                <h5> Select Date and slot </h5>
+                <p id="datepairExample" class="poet">
+                    <input type="text" class="date start form-control" id="t1"/>
+                    <input type="text" class="time start form-control" id="t2"/> TO
+                    <input type="text" class="time end form-control" id="t3"/>
+                    <input type="text" class="date end form-control" id="t4"/>
+                </p>
+            </div>
+        </div>
     </div>
-</div>
-</div>
     <br>
     <button onClick="up()" class="btn btn-primary" id ="pol">Add more Slot</button>
     <h4 id="sp"> Already selected slots</h4>
@@ -34,25 +34,24 @@
     <script src="https://jonthornton.github.io/Datepair.js/dist/jquery.datepair.js"></script><br><br>
     <button onClick="finalcall()" class="btn btn-dark" id="pill">Book slot</button>
 </section>
-    <main class="content">
-        <div class="container p-0">
-            <h1 class="h3 mb-3 olign">Messages</h1>
-            <h2 class="olign">Welcome to room.Start chatting.</h2>
-            <div class="card">
-                <div class="row g-0">
-                    <div class="col-12 col-sm-12 col-xl-12">
-                    <div class="position-relative">
-                        <textarea class="textstyle" id="chat-log" rows="10" cols="140" wrap="hard" readonly style="max-width:100%">{%for i in chatmsg%}{{i.person}} :{{i.content}}.&#13;&#10;{% endfor %}</textarea>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="chat-message-input" placeholder="Type your message">
-                            <button class="btn btn-primary" id="chat-message-submit"> Send</button>
-                        </div>
-                    </div>
+<main class="content">
+    <div class="container p-0">
+        <h1 class="h3 mb-3 olign">Messages</h1>
+        <h2 class="olign">Welcome to room.Start chatting.</h2>
+        <div class="card">
+            <div class="row g-0">
+                <div class="col-12 col-sm-12 col-xl-12">
+                <div class="position-relative">
+                    <textarea class="textstyle" id="chat-log" rows="10" cols="140" wrap="hard" readonly style="max-width:100%">{%for i in chatmsg%}{{i.person}} :{{i.content}}.&#13;&#10;{% endfor %}</textarea>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="chat-message-input" placeholder="Type your message">
+                        <button class="btn btn-primary" id="chat-message-submit"> Send</button>
                     </div>
                 </div>
             </div>
         </div>
-    </main><br>
+    </div>
+</main><br>
     {%for i in chatmsg%}<div class="class-1" id="pop" hidden>{{i.content}}</div>{% endfor %}
     <br>
     {{userr|json_script:'name'}}
