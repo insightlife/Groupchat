@@ -26,6 +26,7 @@ urlpatterns = [
     path('support',views.support),
     path('feedback',views.feedback),
     path('report',views.report),
-    path('form',views.formin)
+    path('form',views.formin),
+    path('wc',views.wc)
 ]
 urlpatterns += staticfiles_urlpatterns()

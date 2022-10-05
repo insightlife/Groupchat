@@ -218,3 +218,16 @@ def feedback(request):
 def report(request):
     reportperson = request.user
     return render(request,'chat.html',{'report':reportperson})
+
+import requests
+
+def wc(request):
+    url = "https://visual-crossing-weather.p.rapidapi.com/forecast"
+    querystring = {"aggregateHours":"24","location":"Washington,DC,USA","contentType":"csv","unitGroup":"us","shortColumnNames":"0"}
+    headers = {
+        "X-RapidAPI-Key": "0b993e6f31mshabdabcac484e1dcp1b8944jsn86b987c9e48a",
+        "X-RapidAPI-Host": "visual-crossing-weather.p.rapidapi.com"
+    }
+    response = requests.request("GET", url, headers=headers, params=querystring)
+    print(response.text)
+    return render(request,'home.html')
