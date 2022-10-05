@@ -147,7 +147,7 @@
         var dd="";
         const grpname=JSON.parse(document.getElementById('group_name').textContent)
         const username=JSON.parse(document.getElementById('name').textContent)
-        var ws= new WebSocket('ws://127.0.0.1:8000/wa/sc/'+grpname)
+        var ws= new WebSocket('wss://groupchat98.herokuapp.com/wa/sc/'+grpname)
         console.log(grpname)
         ws.onopen = function(){
             console.log('WebSocket connection open....')
