@@ -1,5 +1,5 @@
 body {
-    background-image: url('http://groupmasti.herokuapp.com/static/back2.jpg');
+    background-image: url('http://127.0.0.1:8000/static/back2.jpg');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;

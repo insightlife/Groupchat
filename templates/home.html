@@ -5,34 +5,26 @@
         <div class="row">
             <div class="col-sm-3 align">
                 <div class="col-md-12"><img src="{% static 'pic1.jpg'%}" ></div>
-                <div class="col-md-12 align"><a href="k/indian/"><button class="btn btn-dark">North Indian chatroom</button></a></div>
+                <div class="col-md-12 align"><a href="k/naveen/"><button class="btn btn-dark">Naveen chatroom</button></a></div>
             </div>
             <div class="col-sm-3 align">
                 <div class="col-md-12"><img src="{% static 'pic5.jpg'%}" ></div>
-                <div class="col-md-12 align"><a href="k/kolkata/"><button class="btn btn-dark">NorthEast chatroom</button></a></div>
+                <div class="col-md-12 align"><a href="k/pulastya/"><button class="btn btn-dark">Pulastya chatroom</button></a></div>
             </div>
             <div class="col-sm-3 align">
                 <div class="col-md-12"><img src="{% static 'pic6.jpg'%}"></div>
-                <div class="col-md-12 align"><a href="k/bangalore/"><button class="btn btn-dark">South Indian chatroom</button></a></div>
+                <div class="col-md-12 align"><a href="k/pulaha/"><button class="btn btn-dark">Pulaha Indian chatroom</button></a></div>
             </div>
             <div class="col-sm-3 align">
                 <div class="col-md-12"><img src="{% static 'dating8.jpg'%}"></div>
-                <div class="col-md-12 align"><a href="k/hyderbad/"><button class="btn btn-dark">Common chatroom</button></a></div>
-            </div>
-        </div>
-        <br><br>
-        <div class="row align">
-            <div class="col-sm-1"></div>
-            <div class="col-sm-9">
-                <input type="text" placeholder="Create custom room of your choice" id="imp" name="custom" class="form-control align"><br>
-                <input type="submit" class="btn btn-dark" id="ok" value="Create room">
+                <div class="col-md-12 align"><a href="k/common/"><button class="btn btn-dark">Common chatroom</button></a></div>
             </div>
         </div><br>
         <div class="row align">
             <div class="col-sm-1"></div>
             <div class="col-sm-9">
-                <input type="text" placeholder="Create custom room of your choice" id="impp" name="custom" class="form-control align"><br>
-                <input type="submit" class="btn btn-dark" id="sk" value="Create room">
+                <input type="text" placeholder="Create custom room of your choice" id="imp" name="custom" class="form-control align"><br>
+                <input type="submit" class="btn btn-dark" id="ok" value="Create room">
             </div>
         </div>
     <script>
@@ -40,11 +32,6 @@
             const mmsg=document.getElementById('imp').value
             console.log(mmsg)
             location.href = "k/"+mmsg;
-        };
-        document.getElementById("sk").onclick = function () {
-            const mmsg=document.getElementById('impp').value
-            console.log(mmsg)
-            location.href = "ok/"+mmsg;
         };
     </script>
 {%endblock%}

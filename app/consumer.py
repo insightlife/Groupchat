@@ -20,15 +20,19 @@ class MySync(SyncConsumer):
         print("final data...",ddata)
         groupp = group.objects.get(name=self.gpn)
         print("chat is going to ave for group",groupp)
+        p=self.scope['user']
         chatt = chat(content=ddata['msg'],group=groupp,person=self.scope['user'])
         chatt.save()
+        extuser=self.scope['user']
+        print("checking imp",event)
+        event['exuser']=self.scope['user']
         async_to_sync(self.channel_layer.group_send)(self.gpn,{'type':'chat.message','message':event['text']})
 
     def chat_message(self,event):
         print('event..chat_message_handler',event)
         print('event..chat_message_handler',event['message'])
         print(self.scope["user"])
-        self.send({'type':'websocket.send','text':event['message'],'user':self.scope['user']})
+        self.send({'type':'websocket.send','text':event['message']})
 
     def websocket_disconnect(self,event):
         print("websocket disconnected")

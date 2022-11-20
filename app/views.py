@@ -27,44 +27,16 @@ def home(request):
     return render(request,'home.html')
 
 def index(request,group_name):
-    print(request.user)
-    print(group_name)
     chat_list = []
     grp = group.objects.filter(name=group_name).first()
-    print("group name received from input",grp)
     if grp:
-        print("in if block ")
         chat_list=chat.objects.filter(group=grp)
-        print("okay show chat list",chat_list)
     else:
-        print("in else block ")
         group.objects.create(name=group_name)
     strr = str(request.user)
     userk = bytes(strr, 'utf-8')
-    print(type(userk))
     userkk = userk.decode(encoding = "utf-8")
-    print(type(userkk))
     return render(request,'index.html',{'chatmsg':chat_list,'group':group_name,'userr':userkk})
-
-def dindex(request,group_name):
-    print(request.user)
-    print(group_name)
-    chat_list = []
-    grp = group.objects.filter(name=group_name).first()
-    print("group name received from input",grp)
-    if grp:
-        print("in if block ")
-        chat_list=chat.objects.filter(group=grp)
-        print("okay show chat list",chat_list)
-    else:
-        print("in else block ")
-        group.objects.create(name=group_name)
-    strr = str(request.user)
-    userk = bytes(strr, 'utf-8')
-    print(type(userk))
-    userkk = userk.decode(encoding = "utf-8")
-    print(type(userkk))
-    return render(request,'dindex.html',{'chatmsg':chat_list,'group':group_name,'userr':userkk})
 
 def customroom(request):
     if request.method == "POST":
@@ -182,7 +154,7 @@ def password_reset_request(request):
 					'protocol': 'http',
 					}
                     email = render_to_string(email_template_name, c)
-                    vemail="https://groupmasti.herokuapp.com/reset/"+c['uid']+"/"+c['token']
+                    vemail="http://127.0.0.1:8000/reset/"+c['uid']+"/"+c['token']
                     print(vemail)
                     try:
                         send_mail(subject, email, 'admin@example.com' , [user.email], fail_silently=False)

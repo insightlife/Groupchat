@@ -1,42 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 {% load static%}
-<section hidden>
-    <div class="row">
-        <div class="col-sm-4">
-            <label id="l1">Choose your Role: </label>
-            <select id="language" onChange="update()"  class="form-select">
-                <option value="Nothing" id="nothing">Select role</option>
-                <option value="Mentor" id="Mentor">Mentor</option>
-                <option value="Mentee" id="Mentee">Mentee</option>
-            </select>
-            <br>
-            <label> Your current Role: </label>
-            <input type="text" id="value" class="form-control">
-            <div class="demo" id="watch">
-                <h5> Select Date and slot </h5>
-                <p id="datepairExample" class="poet">
-                    <input type="text" class="date start form-control" id="t1"/>
-                    <input type="text" class="time start form-control" id="t2"/> TO
-                    <input type="text" class="time end form-control" id="t3"/>
-                    <input type="text" class="date end form-control" id="t4"/>
-                </p>
-            </div>
-        </div>
-    </div>
-    <br>
-    <button onClick="up()" class="btn btn-primary" id ="pol">Add more Slot</button>
-    <h4 id="sp"> Already selected slots</h4>
-    <h4 id="sk"> Available slots</h4>
-    <h5 id="b8" hidden></h5>
-    <h4 id="sd">Mentee selected time slot</h4>
-    <script src="https://jonthornton.github.io/Datepair.js/dist/datepair.js"></script>
-    <script src="https://jonthornton.github.io/Datepair.js/dist/jquery.datepair.js"></script><br><br>
-    <button onClick="finalcall()" class="btn btn-dark" id="pill">Book slot</button>
-</section>
 <main class="content">
     <div class="container p-0">
-        <button class"btn btn-dark olign"><h2 class="olign colr">Welcome to room.Start chatting.</h2></button>
+        <button class"btn btn-dark olign">
+            <h2 class="olign colr">Welcome to room.Start chatting.<a href=""><span class="glyphicon glyphicon-refresh"></span></a></h2>
+        </button>
         <div class="card">
             <div class="row g-0">
                 <div class="col-12 col-sm-12 col-xl-12">
@@ -59,46 +28,21 @@
         var dd="";
         const grpname=JSON.parse(document.getElementById('group_name').textContent)
         const username=JSON.parse(document.getElementById('name').textContent)
-        var ws= new WebSocket('wss://groupchat98.herokuapp.com/wa/sc/'+grpname)
+        var ws= new WebSocket('ws://127.0.0.1:8000/wa/sc/'+grpname)
         console.log(grpname)
         ws.onopen = function(){
             console.log('WebSocket connection open....')
         } 
         ws.onmessage = function(event){
-            console.log('Message receieved from server...',event.data)
+            console.log('Message receieved from server...',event)
             console.log('type of message receieved from server',typeof(event.data))
             const data= JSON.parse(event.data)
             console.log('Message receieved from server...',data)
             console.log('type of message receieved from server',typeof(data))
+            console.log(data.userr)
             document.querySelector('#chat-log').value +=username+" : "+(data.msg+'\n');
             console.log(data.msg);
             console.log (typeof data.msg) 
-            if (data.msg.includes('@')){
-                console.log(data.msg+"ok")
-                dd=data.msg;
-                var val=dd.split("@");
-                console.log(val)
-                console.log(typeof val)
-                var div1 = document.createElement("button");
-                var div2 = document.createElement("h2");
-                div1.className = "btn btn-success";
-                div1.innerHTML = val[0]+"->"+val[1]+"-"+val[2];
-                insertAfter(document.getElementById('b8'),div1);
-                insertAfter(document.getElementById('b8'),div2);
-
-            }
-            else{
-                var d=data.msg;
-                var llen= d.length;
-                var hk= d.split('#');
-                var div1 = document.createElement("button");
-                var div2 = document.createElement("h3");
-                var kk=hk[0].slice(1,hk[0].length)+"->"+hk[1];
-                div1.innerHTML = kk;
-                div1.className = "btn btn-warning";
-                insertAfter(document.getElementById('sd'),div1);
-                insertAfter(document.getElementById('sd'),div2);
-            }
         }
         ws.onerror = function(event){
             console.log('websocket error occured..',event)
@@ -115,153 +59,6 @@
             ws.send(JSON.stringify({'msg':msg}))
             messageinputdom.value=''
         }
-        function insertAfter(referenceNode, newNode) {
-            referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-          }
-		function update() {
-			var select = document.getElementById('language');
-			var option = select.options[select.selectedIndex];
-			document.getElementById('value').value = option.value;
-            if (document.getElementById('value').value=="Mentor"){
-                document.getElementById('b8').style.display="none";
-                document.getElementById('pol').style.display="block";
-                document.getElementById('sp').style.display="block";
-                document.getElementById('sk').style.display="none";
-                document.getElementById('Mentee').setAttribute("disabled", "disabled");
-                document.getElementById('nothing').setAttribute("disabled", "disabled");
-                document.getElementById('watch').style.display="block";
-                document.getElementById('sd').style.display="block";
-                var elements = document.getElementsByClassName("class-1");
-                var len= elements.length;
-                for (var i = 0, len = elements.length; i < len; i++) {
-                    if(elements[i].innerHTML.includes('@')){
-                        var dd= elements[i].innerHTML;
-                        var val=dd.split("@");
-                        console.log(val)
-                        console.log(typeof val)
-                        var div1 = document.createElement("button");
-                        var div2 = document.createElement("h2");
-                        div1.className = "btn btn-success";
-                        div1.innerHTML = val[0]+"->"+val[1]+"-"+val[2];
-                        insertAfter(document.getElementById('b8'),div1);
-                        insertAfter(document.getElementById('b8'),div2);
-                    }
-                    else{
-                        var d=elements[i].innerHTML;
-                        var llen= d.length;
-                        var div1 = document.createElement("button");
-                        var div2 = document.createElement("h3");
-                        var hk= d.split('#');
-                        var kk=hk[0].slice(1,hk[0].length)+"->"+hk[1];
-                        div1.innerHTML = kk;
-                        div1.className = "btn btn-warning";
-                        insertAfter(document.getElementById('sd'),div1);
-                        insertAfter(document.getElementById('sd'),div2);
-                    }
-                }
-            }
-            else if (document.getElementById('value').value=="Mentee"){
-                document.getElementById('Mentor').setAttribute("disabled", "disabled");
-                document.getElementById('nothing').setAttribute("disabled", "disabled");
-                document.getElementById('b8').style.display="block";
-                document.getElementById('sp').style.display="none";
-                document.getElementById('pol').style.display="none";
-                document.getElementById('watch').style.display="none";
-                document.getElementById('sk').style.display="block";
-                document.getElementById('sd').style.display="block";
-                document.getElementById('pill').style.display="block";
-                var elements = document.getElementsByClassName("class-1");
-                var len= elements.length;
-                for (var i = 0, len = elements.length; i < len; i++) {
-                    if(elements[i].innerHTML.includes('@')){
-                        var dd= elements[i].innerHTML;
-                        var val=dd.split("@");
-                        console.log(val)
-                        console.log(typeof val)
-                        var div1 = document.createElement("button");
-                        var div2 = document.createElement("input");
-                        var div3 = document.createElement("h2");
-                        div1.className = "btn btn-success";
-                        div2.className = "selcheckbox form-check-input form-group";
-                        div1.innerHTML = val[0]+"->"+val[1]+"-"+val[2];
-                        div2.setAttribute('type','checkbox');
-                        div2.setAttribute('value',div1.innerHTML)
-                        insertAfter(document.getElementById('b8'),div2);
-                        insertAfter(div2,div1);
-                        insertAfter(document.getElementById('b8'),div3);
-                    }
-                    else{
-                        var d=elements[i].innerHTML;
-                        var llen= d.length;
-                        var div1 = document.createElement("button");
-                        var div2 = document.createElement("h3");
-                        var hk= d.split('#');
-                        var kk=hk[0].slice(1,hk[0].length)+"->"+hk[1];
-                        div1.innerHTML = kk;
-                        div1.className = "btn btn-warning";
-                        insertAfter(document.getElementById('sd'),div1);
-                        insertAfter(document.getElementById('sd'),div2);
-                    }
-                }
-            }
-            else{
-                console.log("select any role");
-                document.getElementById('watch').style.display="none";
-                document.getElementById('b8').style.display="none";
-                document.getElementById('sp').style.display="none";
-                document.getElementById('pol').style.display="none";
-                document.getElementById('sk').style.display="none";
-                document.getElementById('pill').style.display="none";
-                document.getElementById('sd').style.display="none";
-            }
-		}
-        function up(){
-            console.log(document.getElementById("t1").value)
-            console.log(document.getElementById("t2").value)
-            console.log(document.getElementById("t3").value)
-            console.log(document.getElementById("t4").value)
-            k1= document.getElementById("t1").value
-            k2=document.getElementById("t2").value
-            k3=document.getElementById("t3").value
-            k4=document.getElementById("t4").value
-            var finalmsg= k1+"@"+k2+"@"+k3+"@"+k4;
-            console.log(finalmsg)
-            document.getElementById("t1").value="";
-            document.getElementById("t2").value="";
-            document.getElementById("t3").value="";
-            document.getElementById("t4").value="";
-            ws.send(JSON.stringify({'msg':finalmsg})) 
 
-        }
-        $('#datepairExample .time').timepicker({
-            'showDuration': true,
-            'timeFormat': 'g:ia'
-        });
-        $('#datepairExample .date').datepicker({
-            'format': 'yyyy-m-d',
-            'autoclose': true
-        });
-        $('#datepairExample').datepair();
-
-        function finalcall(){
-            var ss=document.getElementsByClassName("selcheckbox form-check-input");
-            for (var i =0;i<ss.length;i++){
-                if(ss[i].checked==true){
-                    console.log(ss[i].value);
-                    console.log(ss[i].innerHTML);
-                    var tt= ss[i].value.split(';');
-                    console.log(tt);
-                    console.log(tt[0]);
-                    console.log(typeof tt[0]);
-                    break;
-                }
-            }
-            console.log(tt[0].slice(0,tt[0].length-4));
-            console.log(tt[1])
-            msg="i"+tt[0].slice(0,tt[0].length-4)+"#"+tt[1];
-            console.log(msg);
-            ws.send(JSON.stringify({'msg':msg}))
-            messageinputdom.value='';
-        }
     </script>
 {%endblock%}
